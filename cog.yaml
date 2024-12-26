@@ -1,0 +1,17 @@
+# Configuration for Cog ⚙️
+# Reference: https://github.com/replicate/cog/blob/main/docs/yaml.md
+
+build:
+  gpu: true
+  cuda: "12.1"
+  python_version: "3.11"
+  python_packages:
+    - "torch==2.4"
+    - "git+https://github.com/huggingface/transformers.git"
+    - "accelerate==1.2.1"
+    - "numpy<2"
+
+  run:
+    - FLASH_ATTENTION_SKIP_CUDA_BUILD=TRUE pip install flash-attn --no-build-isolation
+
+predict: "predict.py:Predictor"
